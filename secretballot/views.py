@@ -15,7 +15,7 @@ def vote(request, content_type, object_id, vote, can_vote_test=None,
 
     user = request.user
     if not user.is_active:
-        raise HttpResponseForbidden('Inactive users are not permitted to vote.')
+        return HttpResponseForbidden('Inactive users are not permitted to vote.')
     if isinstance(content_type, ContentType):
         pass
     elif isinstance(content_type, ModelBase):
